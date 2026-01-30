@@ -1,4 +1,4 @@
-import '../style.css'
+import '../style.less'
 import $ from 'jquery'
 import { formatUntil, getNextChristmas } from '../utils/date'
 
@@ -34,4 +34,4 @@ $('#resetBtn').on('click', function(): void {
 
 console.log('jQuery version:', $.fn.jquery)
 console.log('App initialized with TypeScript!')
-$("#txtCounter").val("INTIAL TEXT");
+$("#txtCounter").val("INTIAL TEXT!!!");

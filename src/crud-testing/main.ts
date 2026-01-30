@@ -1,4 +1,3 @@
-import '../style.css'
 import $ from 'jquery'
 import { formatUntil, getNextChristmas } from '../utils/date'
 

@@ -2,8 +2,12 @@
 <!doctype html>
 <html lang="en">
   <head>  
+    
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+
     <% if (Request.QueryString["dev"] != null) { %>  <!-- or your own env check -->
       <!-- Vite HMR client + your entry -->
+      
       <script type="module">
         import { inject } from "http://localhost:5173/@vite-plugin-checker-runtime";
         inject({
@@ -24,16 +28,25 @@
     var manifest = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(manifestJson);
     var entry = manifest["src/hello-world/main.ts"];
     manifestPath = entry["file"];
+    
+    var stylePath = "";
+
+    //var stylePath = entry["css"][0];
+
+    entry = manifest["src/style.less"];
+    stylePath = entry["file"];
+
 
 %>
-      <!-- In prod: reference built assets from /dist/assets/... -->      
+      <!-- In prod: reference built assets from /dist/assets/... -->       
       <script type="module" src="/dist/<%= manifestPath %>"></script>
+      <link rel="stylesheet" href="/dist/<%= stylePath %>" />     
   <% } %>
 
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+    
     <title>Hello World - Vite MPA Demo</title>
   </head>
   <body>

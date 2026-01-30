@@ -11,6 +11,7 @@ export default defineConfig({
     manifest: true,
     rollupOptions: {
       input: {                
+        'style': resolve(__dirname, 'src/style.less'),
         'hello-world/main': resolve(__dirname, 'src/hello-world/main.ts'),
         'crud-testing/main': resolve(__dirname, 'src/crud-testing/main.ts'),
         extra: resolve(__dirname, 'src/hello-world/my-template.html'),        
