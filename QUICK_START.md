@@ -62,9 +62,9 @@ TypeScript configuration for modern JavaScript output.
 1. **Development**:
    - Vite serves files using native ES modules
    - HTML markup lives in `index.html`
+   - Bootstrap CSS loaded via `<link>` in `<head>` (prevents FOUC)
    - TypeScript event handlers in `src/main.ts`
    - jQuery imported as `import $ from 'jquery'`
-   - Bootstrap CSS imported as `import 'bootstrap/dist/css/bootstrap.css'`
    - TypeScript transformed on-the-fly
 
 2. **Production**:

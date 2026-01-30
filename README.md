@@ -17,8 +17,9 @@ Vite uses native ES modules during development. jQuery and Bootstrap are importe
 
 ```typescript
 import $ from 'jquery'
-import 'bootstrap/dist/css/bootstrap.css'
 ```
+
+**Note:** Bootstrap CSS is loaded via a `<link>` tag in `index.html` rather than a JavaScript import. This prevents FOUC (Flash of Unstyled Content)—the brief moment where the page appears unstyled before CSS loads.
 
 ### TypeScript Support
 All app code is written in TypeScript with proper type checking for jQuery thanks to `@types/jquery`.

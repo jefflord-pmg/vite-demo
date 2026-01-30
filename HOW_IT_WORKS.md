@@ -26,6 +26,9 @@ Vite:
 - Transforms it to work in the browser
 - Browser loads it as a native ES module
 
+**CSS Loading Strategy:**
+Bootstrap CSS is loaded via a `<link>` tag in the HTML `<head>` rather than a JavaScript import. This prevents FOUC (Flash of Unstyled Content)—CSS in `<head>` blocks rendering until loaded, ensuring the page is styled from the start.
+
 ### Production Build (`npm run build`)
 
 1. **TypeScript compilation**: `tsc` checks types

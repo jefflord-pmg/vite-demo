@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 import $ from 'jquery'
 
@@ -9,7 +8,11 @@ $('#alertBtn').on('click', function(): void {
 })
 
 $('#incrementBtn').on('click', function(): void {
-  count++
+  count++;
+
+  console.log('Count incremented to:', count);
+  $("#jqueryVersion").val(count.toString());
+
   $('#counter').text(count.toString())
 })
 
