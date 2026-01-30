@@ -1,7 +1,16 @@
-import './style.css'
+import '../style.css'
 import $ from 'jquery'
 
 let count: number = 0
+
+function isPrimeNumber(n: number): boolean {
+  if (n <= 1) return false
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false
+  }
+  return true
+}
+
 
 $('#alertBtn').on('click', function(): void {
   alert('jQuery is working! Version: ' + $.fn.jquery)
@@ -11,7 +20,7 @@ $('#incrementBtn').on('click', function(): void {
   count++;
 
   console.log('Count incremented to:', count);
-  $("#jqueryVersion").val(count.toString());
+  $("#txtCounter").val(count.toString() + "-" + (isPrimeNumber(count) ? "Prime" : "Not Prime")  );
 
   $('#counter').text(count.toString())
 })
@@ -23,3 +32,4 @@ $('#resetBtn').on('click', function(): void {
 
 console.log('jQuery version:', $.fn.jquery)
 console.log('App initialized with TypeScript!')
+$("#txtCounter").val(count.toString());

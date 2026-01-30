@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
+    <title>CRUD Testing - Vite MPA Demo</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand">Vite MPA Demo</span>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/hello-world.html">Hello World</a></li>
+          <li class="active"><a href="/crud-testing.html">CRUD Testing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="app">
+      <div class="container">
+        <h1>CRUD Testing</h1>
+        <p class="lead">Create, Read, Update, Delete operations demo</p>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Add Item</h3>
+              </div>
+              <div class="panel-body">
+                <form id="addForm">
+                  <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-8">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Items List</h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="itemsTable">
+                    <tr>
+                      <td colspan="3" class="text-center text-muted">No items yet. Add one!</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/crud-testing/main.ts"></script>
+  </body>
+</html>

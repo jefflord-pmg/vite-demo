@@ -1,14 +1,20 @@
-# Vite + jQuery 3.7.1 + Bootstrap 3.4.1 Demo
+# Vite + jQuery 3.7.1 + Bootstrap 3.4.1 MPA Demo
 
-A simple "Hello World" demo showing how to use Vite with legacy technologies (jQuery 3.7.1 and Bootstrap 3.4.1) using modern ESM imports and TypeScript.
+A Multi-Page Application (MPA) demo showing how to use Vite with legacy technologies (jQuery 3.7.1 and Bootstrap 3.4.1) using modern ESM imports and TypeScript.
 
 ## What This Demonstrates
 
 - **Vite** as a modern dev server with HMR (Hot Module Replacement)
+- **Multi-Page Application** structure with separate entry points
 - **jQuery 3.7.1** imported as an ES module
-- **Bootstrap 3.4.1** CSS imported as an ES module
+- **Bootstrap 3.4.1** CSS loaded via `<link>` tag
 - **TypeScript** for all application code
 - Modern build process for production deployment
+
+## Pages
+
+- **Hello World** (`/hello-world.html`) - Basic demo with counter
+- **CRUD Testing** (`/crud-testing.html`) - Add, edit, delete items demo
 
 ## Key Concepts
 
@@ -52,12 +58,18 @@ Preview the production build locally.
 
 ```
 vite-demo/
+├── hello-world.html          # Hello World page
+├── crud-testing.html         # CRUD Testing page
+├── index.html                # Redirects to hello-world
+├── vite.config.ts            # MPA build configuration
 ├── src/
-│   ├── main.ts       # TypeScript entry point (event handlers)
-│   └── style.css     # Custom styles
-├── index.html        # HTML markup and entry point
-├── package.json      # Dependencies and scripts
-└── tsconfig.json     # TypeScript configuration
+│   ├── style.css             # Shared styles
+│   ├── hello-world/
+│   │   └── main.ts           # Hello World logic
+│   └── crud-testing/
+│       └── main.ts           # CRUD logic
+├── package.json              # Dependencies and scripts
+└── tsconfig.json             # TypeScript configuration
 ```
 
 ## Dependencies
@@ -70,10 +82,11 @@ vite-demo/
 
 ## How It Works
 
-1. **Vite** starts a dev server that serves `index.html`
-2. `index.html` contains the markup and loads `src/main.ts` as an ES module
-3. Vite transforms TypeScript on-the-fly during development
-4. jQuery and Bootstrap are imported using modern ESM syntax
-5. For production, Vite bundles everything into optimized static assets
+1. **Vite** starts a dev server serving multiple HTML entry points
+2. Each HTML page loads its own TypeScript module (e.g., `/src/hello-world/main.ts`)
+3. `vite.config.ts` defines all entry points for production builds
+4. Vite transforms TypeScript on-the-fly during development
+5. jQuery is imported using modern ESM syntax
+6. For production, Vite bundles each page separately with shared chunks
 
 This setup lets you use legacy libraries with modern tooling!

@@ -1,13 +1,16 @@
-# How Vite Works with jQuery and Bootstrap
+# How Vite Works with jQuery and Bootstrap (MPA)
 
 ## The Modern ESM Approach
 
 ### What is ESM?
 ESM (ECMAScript Modules) is the official JavaScript module system using `import` and `export`. Vite leverages native ESM in the browser during development.
 
-### Project Structure
-- **index.html** - Contains all HTML markup
-- **src/main.ts** - TypeScript for imports and event handlers
+### Project Structure (Multi-Page App)
+- **hello-world.html** - First page with its own `<script>` tag
+- **crud-testing.html** - Second page with its own `<script>` tag
+- **src/hello-world/main.ts** - TypeScript for Hello World page
+- **src/crud-testing/main.ts** - TypeScript for CRUD page
+- **vite.config.ts** - Defines entry points for production build
 
 ### Development Mode (`npm run dev`)
 
@@ -32,16 +35,19 @@ Bootstrap CSS is loaded via a `<link>` tag in the HTML `<head>` rather than a Ja
 ### Production Build (`npm run build`)
 
 1. **TypeScript compilation**: `tsc` checks types
-2. **Bundling**: Vite (uses Rollup) bundles all code
-3. **Tree-shaking**: Removes unused code
-4. **Minification**: Compresses for smaller file size
-5. **Asset optimization**: CSS, fonts, images optimized
+2. **MPA bundling**: Vite builds each entry point from `vite.config.ts`
+3. **Code splitting**: Shared code (jQuery) extracted to common chunk
+4. **Tree-shaking**: Removes unused code
+5. **Minification**: Compresses for smaller file size
+6. **Asset optimization**: CSS, fonts, images optimized
 
 Output in `dist/`:
-- `index.html` - Entry point
-- `assets/*.js` - Bundled JavaScript (jQuery + your code)
-- `assets/*.css` - Bundled CSS (Bootstrap + your styles)
-- `assets/*` - Fonts and other assets
+- `hello-world.html` - First page
+- `crud-testing.html` - Second page
+- `assets/hello-world-*.js` - Hello World bundle
+- `assets/crud-testing-*.js` - CRUD Testing bundle
+- `assets/jquery-*.js` - Shared jQuery chunk
+- `assets/*.css` - Bundled CSS
 
 ### Why This Works with Legacy Libraries
 
@@ -59,10 +65,12 @@ Vite handles CSS imports by:
 
 ### Key Vite Features Used
 
-1. **Dependency Pre-bundling**: Vite pre-bundles dependencies (jQuery, Bootstrap) using esbuild for fast serving
-2. **CSS Code Splitting**: CSS is extracted and loaded separately
-3. **Asset Handling**: Images, fonts automatically copied to `dist/assets/`
-4. **TypeScript**: Built-in support, no extra config needed
+1. **MPA Support**: Multiple HTML entry points via `vite.config.ts`
+2. **Dependency Pre-bundling**: Vite pre-bundles dependencies (jQuery) using esbuild
+3. **Code Splitting**: Shared dependencies extracted to common chunks
+4. **CSS Handling**: Bootstrap loaded via `<link>` to prevent FOUC
+5. **Asset Handling**: Images, fonts automatically copied to `dist/assets/`
+6. **TypeScript**: Built-in support, no extra config needed
 
 ### The TypeScript Magic
 
@@ -79,7 +87,26 @@ This gives you:
 
 ### Configuration
 
-Vite works with minimal config. The default `vite.config.ts` isn't even needed for this simple setup!
+MPA requires a `vite.config.ts` to define entry points:
+
+```typescript
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
+
+export default defineConfig({
+  appType: 'mpa',
+  build: {
+    rollupOptions: {
+      input: {
+        'hello-world': resolve(__dirname, 'hello-world.html'),
+        'crud-testing': resolve(__dirname, 'crud-testing.html'),
+      },
+    },
+  },
+})
+```
+
+- `appType: 'mpa'` - Disables SPA fallback, gives proper 404 for missing pages
 
 TypeScript config (`tsconfig.json`) tells Vite:
 - Target: ES2022 (modern JavaScript)
