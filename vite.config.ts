@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import checker from 'vite-plugin-checker'
 
 export default defineConfig({
   appType: 'mpa',
+  plugins: [
+    checker({ typescript: true })
+  ],
   build: {
     rollupOptions: {
       input: {
