@@ -1,5 +1,6 @@
 import '../style.css'
 import $ from 'jquery'
+import { formatUntil, getNextChristmas } from '../utils/date'
 
 interface Item {
   id: number
@@ -8,6 +9,8 @@ interface Item {
 
 let items: Item[] = []
 let nextId: number = 1
+
+$('#xmasCountdown').text(formatUntil(getNextChristmas()))
 
 function renderItems(): void {
   const $table = $('#itemsTable')

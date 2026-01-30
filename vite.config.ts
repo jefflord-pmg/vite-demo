@@ -8,11 +8,24 @@ export default defineConfig({
     checker({ typescript: true })
   ],
   build: {
+    manifest: true,
     rollupOptions: {
-      input: {
-        'hello-world': resolve(__dirname, 'hello-world.html'),
-        'crud-testing': resolve(__dirname, 'crud-testing.html'),
-      },
+      input: {                
+        'hello-world/main': resolve(__dirname, 'src/hello-world/main.ts'),
+        'crud-testing/main': resolve(__dirname, 'src/crud-testing/main.ts'),
+        extra: resolve(__dirname, 'src/hello-world/my-template.html'),        
+      }    ,
+      output: {
+        // [name] = the key from input (hello-world/main)
+        // [hash] = content hash for cache busting
+        entryFileNames: 'assets/[name]-[hash].js',
+
+        // For chunks (shared code)
+        chunkFileNames: 'assets/[name]-[hash].js',
+
+        // If you have CSS extracted
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      }  
     },
   },
 })

@@ -1,5 +1,6 @@
 import '../style.css'
 import $ from 'jquery'
+import { formatUntil, getNextChristmas } from '../utils/date'
 
 let count: number = 0
 
@@ -8,9 +9,10 @@ function isPrimeNumber(n: number): boolean {
   for (let i = 2; i <= Math.sqrt(n); i++) {
     if (n % i === 0) return false
   }
-  return true
+  return true;
 }
 
+$('#xmasCountdown').text(formatUntil(getNextChristmas()))
 
 $('#alertBtn').on('click', function(): void {
   alert('jQuery is working! Version: ' + $.fn.jquery)
@@ -32,4 +34,4 @@ $('#resetBtn').on('click', function(): void {
 
 console.log('jQuery version:', $.fn.jquery)
 console.log('App initialized with TypeScript!')
-$("#txtCounter").val(count.toString());
+$("#txtCounter").val("INTIAL TEXT");
