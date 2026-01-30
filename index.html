@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + jQuery + Bootstrap 3 Demo</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="jumbotron">
+          <h1>Hello, World!</h1>
+          <p>This is a Vite + jQuery 3.7.1 + Bootstrap 3.4.1 demo</p>
+          <p>
+            <button class="btn btn-primary btn-lg" id="alertBtn">
+              Show jQuery Alert
+            </button>
+          </p>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Vite</h3>
+              </div>
+              <div class="panel-body">
+                Modern, fast dev server with HMR
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h3 class="panel-title">jQuery 3.7.1</h3>
+              </div>
+              <div class="panel-body">
+                Classic DOM manipulation library
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">Bootstrap 3.4.1</h3>
+              </div>
+              <div class="panel-body">
+                Legacy responsive framework
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="well">
+          <p>Click counter: <span id="counter">0</span></p>
+          <button class="btn btn-default" id="incrementBtn">Increment</button>
+          <button class="btn btn-warning" id="resetBtn">Reset</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
