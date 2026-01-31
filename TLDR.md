@@ -13,7 +13,8 @@ Two demo pages:
 - **CRUD Testing** - Add/edit/delete items demo
 
 ## Location
-`C:\Users\jeff\source\repos\vite-demo`
+- **Local**: `C:\Users\jeff\source\repos\vite-demo`
+- **GitHub**: https://github.com/jefflord-pmg/vite-demo
 
 ## Quick Commands
 ```bash
