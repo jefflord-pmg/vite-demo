@@ -34,4 +34,4 @@ $('#resetBtn').on('click', function(): void {
 
 console.log('jQuery version:', $.fn.jquery)
 console.log('App initialized with TypeScript!')
-$("#txtCounter").val("INTIAL TEXT!!!");
+$("#txtCounter").val("INITIAL TEXT");

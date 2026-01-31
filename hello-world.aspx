@@ -2,10 +2,29 @@
 <!doctype html>
 <html lang="en">
   <head>  
-    
+    <%
+      var isDev = Request.QueryString["dev"] != null;
+      var isProd = Request.QueryString["prod"] != null;
+
+      if (isDev)
+      {
+          isProd = false;
+      }   
+      else if (isProd)
+      {
+          isDev = false;
+      }
+      else
+      {
+          // Default to dev mode
+          isDev = true;
+          isProd = false;
+      }
+
+    %>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
 
-    <% if (Request.QueryString["dev"] != null) { %>  <!-- or your own env check -->
+    <% if (isDev) { %>  <!-- or your own env check -->
       <!-- Vite HMR client + your entry -->
       
       <script type="module">

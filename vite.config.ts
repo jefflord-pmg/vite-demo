@@ -1,11 +1,24 @@
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import { resolve } from 'path'
 import checker from 'vite-plugin-checker'
+
+function aspxWatcher(): Plugin {
+  return {
+    name: 'aspx-watcher',
+    handleHotUpdate({ file, server }) {
+      if (file.endsWith('.aspx')) {
+        console.log(`ASPX file changed: ${file}`)
+        server.ws.send({ type: 'full-reload' })
+      }
+    },
+  }
+}
 
 export default defineConfig({
   appType: 'mpa',
   plugins: [
-    checker({ typescript: true })
+    checker({ typescript: true }),
+    aspxWatcher()
   ],
   build: {
     manifest: true,
